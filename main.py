@@ -48,6 +48,7 @@ async def read_root():
 
 @app.get("/health")
 async def health_check():
+    logging.info("Health check initiated")
     return {"status": "ok"}
 
 if __name__ == "__main__":
