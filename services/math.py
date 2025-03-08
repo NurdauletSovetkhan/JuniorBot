@@ -8,7 +8,7 @@ def render_latex_to_image(latex_code, filename="latex_example.png"):
         ax.text(0.5, 0.5, f"${latex_code}$", size=20, ha="center", va="center")
         ax.axis("off")
 
-        # Save file
+        # Save files
         output_path = os.path.join(os.getcwd(), filename)  # Сохраняем в текущей директории
         plt.savefig(output_path, format="png", bbox_inches="tight", dpi=300)
         plt.close(fig)

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Unq client id
+# Unique client id
 IMGUR_CLIENT_ID = os.getenv('IMGUR_CLIENT_ID')
 
 

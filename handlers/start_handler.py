@@ -6,7 +6,7 @@ from aiogram.types import Message
 TOKEN = getenv('TOKEN')
 
 router = Router()
-
+#/start handler
 @router.message(CommandStart())
 async def start_handler(message: Message):
     await message.answer("""Привет! Я Nurdaulet Junior — твой компаньон, помощник и просто тот, кто рядом.  

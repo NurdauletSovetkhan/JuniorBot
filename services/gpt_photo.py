@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 
-# Create client session
+# Create client sessio
 client = AsyncOpenAI(
     api_key=os.getenv('OPENAI_API'),
 )

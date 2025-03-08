@@ -10,7 +10,7 @@ TOKEN = getenv('TOKEN')
 
 router = Router()
 
-# Name of the bot and trigger words
+# Name of the bot & trigger words
 BOT_MENTION = "Nurdaulet Junior"
 TRIGGER_WORDS = ["бот", "помощник", "Nurdaulet", "Junior", "собеседник", "Nurdaulet Junior", "nurdaulet junior", "junior", "jun", "младший", "дурак", "джуниор", "everyone", "джун", "жун"]
 ASK_FOR_PHOTO = ["нарисуй", "нарисуй мне", "нарисуй картинку", "нарисуй что-нибудь", "хочу фото", "draw", "draw me", "draw a picture", "draw something", "I want a photo"]

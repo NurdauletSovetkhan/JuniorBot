@@ -10,7 +10,7 @@ router = Router()
 
 @router.message(F.content_type == types.ContentType.PHOTO)
 async def handle_photo(message: types.Message):
-    # Check whether we have photo
+    # Check whether we have photos
     if not message.photo:
         await message.reply("Пожалуйста, отправь изображение.")
         return

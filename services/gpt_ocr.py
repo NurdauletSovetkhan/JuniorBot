@@ -31,7 +31,7 @@ async def ocr(image_url: str):
     )
     # Main logic
     answer = response.choices[0].message.content
-    prompt = answer + "It's a analysis of image. If it's quiz, then just give answers e.g. A, B, D also if it's дай просто ответ, а не обьяснения. ЕСЛИ ЭТО МАТЕМАТИКА, ТО ПЕРЕПИШИ ЕЕ, В ИНОМ СЛУЧАЕ ПРОСТО ПОГОВОРИ О ФОТО, СПРОСИ КАК ВАМ И Т.Д."
+    prompt = answer + "It's a analysis of image. If it is quiz, then just give answers e.g. A, B, D also if it's дай просто ответ, а не обьяснения. ЕСЛИ ЭТО МАТЕМАТИКА, ТО ПЕРЕПИШИ ЕЕ, В ИНОМ СЛУЧАЕ ПРОСТО ПОГОВОРИ О ФОТО, СПРОСИ КАК ВАМ И Т.Д."
     answer = await ask_gpt(prompt)
     return answer
 

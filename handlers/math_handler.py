@@ -1,7 +1,7 @@
 from os import getenv
 from aiogram import Router
 from aiogram.filters import Command
-from aiogram.types import Message, FSInputFile
+from aiogram.types import Message
 from services.gpt import ask_gpt
 from services.math import render_latex_to_image
 

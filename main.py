@@ -11,7 +11,7 @@ from handlers.text_handler import router as text_router
 from handlers.image_handler import router as image_router
 from handlers.math_handler import router as math_router
 
-# Получается роутеры прилегают к диспатчеру. Диспатчер типа центр, хаб, а хендлеры как источники
+# Получается роутеры прилегают to диспатчеру. Диспатчер типа центр, хаб, а хендлеры как источники
 
 load_dotenv()
 TOKEN = getenv("TOKEN")
