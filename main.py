@@ -7,6 +7,7 @@ from aiogram.enums import ParseMode
 from dotenv import load_dotenv
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 import asyncio
+import threading
 from handlers.start_handler import router as start_router
 from handlers.text_handler import router as text_router
 from handlers.image_handler import router as image_router
@@ -58,8 +59,10 @@ def run_server():
     httpd.serve_forever()
 
 if __name__ == "__main__":
-    # Запуск бота и сервера
-    asyncio.run(start_bot())  # Запускаем бота
+    # Запуск HTTP-сервера в отдельном потоке
+    server_thread = threading.Thread(target=run_server)
+    server_thread.daemon = True
+    server_thread.start()
 
-    # Запуск HTTP-сервера
-    run_server()
+    # Запуск бота
+    asyncio.run(start_bot())
