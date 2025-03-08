@@ -12,6 +12,7 @@ router = Router()
 
 # Name of the bot & trigger words
 BOT_MENTION = "Nurdaulet Junior"
+BOT_MENTION2 = "Jun"
 TRIGGER_WORDS = ["бот", "помощник", "Nurdaulet", "Junior", "собеседник", "Nurdaulet Junior", "nurdaulet junior", "junior", "jun", "младший", "дурак", "джуниор", "everyone", "джун", "жун"]
 ASK_FOR_PHOTO = ["нарисуй", "нарисуй мне", "нарисуй картинку", "нарисуй что-нибудь", "хочу фото", "draw", "draw me", "draw a picture", "draw something", "I want a photo"]
 ANSWER_PROBABILITY = 5
@@ -19,27 +20,18 @@ ANSWER_PROBABILITY = 5
 
 @router.message(F.content_type == ContentType.TEXT)
 async def text_handler(message: Message):
-    user_input = message.text
+    user_input = message.text.lower()
 
-    # Check the mention of the bot
-    if any(trigger_word.lower() in user_input.lower() for trigger_word in TRIGGER_WORDS):
-        # Send the input to gpt
+    # Проверяем, ответ ли это на другое сообщение и упоминается ли бот
+    if message.reply_to_message and BOT_MENTION.lower() in user_input or message.reply_to_message and BOT_MENTION2 in user_input:
         response = await ask_gpt(user_input)
-        try:
-            # Send answer to the user
-            await message.answer(response)
-        except TypeError:
-            await message.answer("Sad :(")
+        await message.answer(response)
 
-    elif any(trigger_word.lower() in user_input.lower() for trigger_word in ASK_FOR_PHOTO):
-        # Generate an image
+    elif any(trigger_word in user_input for trigger_word in ASK_FOR_PHOTO):
         image_url = await generate_image(user_input)
-
-        image = URLInputFile(
-            image_url,
-            filename="python-logo.png"
-        )
+        image = URLInputFile(image_url, filename="generated_image.png")
         await message.answer_photo(image)
+
 
     # else:
     #     # Random message
